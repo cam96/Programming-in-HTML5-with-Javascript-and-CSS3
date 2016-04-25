@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<meta charset="utf-8" /> 
+		<title> 
+			DEMO: HTML Elements for Describing Page Content
+		</title>
+	</head>
+	
+	<body> 
+		<h1>HTML Elements for Describing Page Content</h1>
+		
+		<h2>Abbreviation</h2>
+		<abbr title="Myers Norris Penny">MNP</abbr>
+
+		<h2>Article</h2>
+		<!-- 
+		An article should make sense on its own and it should be possible to distribute it independently from the rest of the site.
+
+		Potential sources for the <article> element:
+			Forum post
+			Blog post
+			News story
+			Comment
+		-->
+		<article>
+		  <b>Differences between HTML 4.0.1 and HTML 5</b>
+		  <p>The version of HTML is different.  That is all.</p>
+		</article>
+		
+		<h2>Auxiliary Section</h2>
+		<aside>
+		  <h4>HTML 4.0.1</h4>
+		  <p>HTML 4.0.1 is a version of HTML that does things.</p>
+		</aside>
+
+		<aside>
+		  <h4>HTML 5</h4>
+		  <p>HTML 5 is a version of HTML that does things.</p>
+		</aside>
+		
+		<h2>Bi-directional text override</h2>
+		<bdo dir="rtl">
+			This text will go right-to-left.
+		</bdo>
+		
+		<h2>Bold</h2>
+		<b>This text is bold</br>
+		
+		<h2>Contact Information</h2>
+		<address>
+			Written by <a href="mailto:cameron.mckay@mnp.ca">Cameron McKay</a>.<br /> 
+			201 Portage Avenue <br />
+			Winnipeg, MB <br />
+			Canada
+		</address>
+		
+		<h2>Cite</h2>
+		<!-- The <cite> tag defines the title of a work (e.g. a book, a song, a movie, a TV show, a painting, a sculpture, etc.). -->
+		<!-- HTML 4.0.1 defined a full citation.  HTML5 only defines the title -->
+		<img src="img_the_scream.jpg" width="220" height="277" alt="The Scream">
+		<p><cite>The Scream</cite> by Edward Munch. Painted in 1893.</p>
+		
+		<h2>Datalist *New in HTML5*</h2>
+		<input list="browsers">		
+		
+		<datalist id="browsers">
+		  <option value="Internet Explorer">
+		  <option value="Firefox">
+		  <option value="Chrome">
+		  <option value="Opera">
+		  <option value="Safari">
+		</datalist>
+		
+		<h2>Definition</h2>
+		<p>
+			<dfn id="html-def">
+				<abbr title="HyperText Markup Language">
+					HTML
+				</abbr>
+			</dfn> 
+			is the standard markup language for creating web pages.
+		</p>
+		<p>This is some text...</p>
+		<p>This is some text...</p>
+		<p>Learn <a href="#html-def">HTML</a> now.</p>
+		
+		<h2>Deletion</h2>
+		<del>This is a deleted item in the document.</del>
+		
+		<h2>Details and Summary *New in HTML5*</h2>
+		<details>
+		  <summary>Copyright 1999-2014.</summary> <!-- The <summary> tag defines a visible heading for the <details> element. The heading can be clicked to view/hide the details. -->
+		  <p>Refsnes Data. All Rights Reserved.</p>
+		  <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+		</details>
+		
+		<h2>Description List</h2>
+		<dl> <!-- Description list -->
+		  <dt>Coffee</dt> <!-- Description Term -->
+		  <dd>Black hot drink</dd> <!-- Definition Description -->
+		  <dt>Milk</dt>
+		  <dd>White cold drink</dd>
+		</dl>
+
+		<h2>Division</h2>
+		<div style="color:#0000FF">
+		  <p>This is a paragraph.</p>
+		</div>
+		
+		<h2>Header> *New in HTML5*</h2>
+		<header>
+			<p>This is a header</p>
+		</header>
+		
+		<h2>Figure *New in HTML5*</h2>
+		<!-- The figure tag specifies self-contained content, like illustrations, diagrams, photos, code listings, etc. -->
+		<figure>
+		  <img src="img_pulpit.jpg" alt="The Pulpit Rock" width="304" height="228">
+		</figure>
+		
+		<h2>Footer *New in HTML5*</h2>
+		<footer>
+		  <p>Posted by: Hege Refsnes</p>
+		  <p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>
+		</footer>
+		
+		<h2>Italics</h2>
+		<i>This text is in italics</i>
+		
+		<h2>Phrases</h2>
+		<em>Emphasized text</em><br> 
+		<strong>Strong text</strong><br> <!-- important text -->
+		<code>A piece of computer code</code><br> <!-- computer code -->
+		<samp>Sample output from a computer program</samp><br> <!-- sample output from your program -->
+		<kbd>Keyboard input</kbd><br> <!-- sample input -->
+		<var>Variable</var> <!-- variables used in code -->
+		
+		<h2>Separator</h2>
+		<h4>HTML</h4>
+		<p>HTML is a language for describing web pages.....</p>
+
+		<hr>
+
+		<h4>CSS</h4>
+		<p>CSS defines how to display HTML elements.....</p>
+		
+	</body>
+</html>

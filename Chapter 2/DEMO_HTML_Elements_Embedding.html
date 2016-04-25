@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />  
+		<title>
+			DEMO: HTML Elements for Embedding Content
+		</title>
+		<!-- The <base> tag specifies the base URL/target for all relative URLs in a document. -->
+		<base href="./" target="_blank">
+	</head>
+	
+	<body>
+		<h1>HTML Elements for Embedding Content</h1>
+		
+		<h2>Audio *New in HTML5*</h2>
+		<audio controls>
+		  <source src="horse.mp3" type="audio/mpeg">
+		  Your browser does not support the audio tag.
+		</audio>
+
+		<h2>Canvas *New in HTML5*</h2>
+		The canvas tag is used to draw graphics, on the fly, via scripting (usually JavaScript).<br />
+		The canvas tag is only a container for graphics, you must use a script to actually draw the graphics.<br /><br />
+		<canvas id="myCanvas" style="align-left">Your browser does not support the HTML5 canvas tag.</canvas>
+
+		<script>
+			var c = document.getElementById("myCanvas");
+			var ctx = c.getContext("2d");
+			ctx.fillStyle = "#FF0000";
+			ctx.fillRect(0, 0, 80, 100);
+		</script>
+		
+		<h2>Hyperlink</h2>
+		<a href=http://www.google.ca>Google Canada Search Engine</a>
+		
+		<h2>Image Map Region</h2>
+		<p>Click a door to see what is behind.</p>
+
+		<img src="monty_hall_3_doors.png" width="334" height="234" alt="Monty Hall Three Doors" usemap="#monty_hall_3_doors_map">
+
+		<map name="monty_hall_3_doors_map">
+		<!-- <area shape="rect" coords=x1,y1,x2,y2" alt="text" href="page" -->
+		  <area shape="rect" coords="0,0,111,234" alt="Door1" href="door1.jpg">
+		  <area shape="rect" coords="111,0,222,234" alt="Door2" href="door2.jpg">
+		  <area shape="rect" coords="222,0,334,234" alt="Door3" href="door3.jpg">
+		</map>
+	</body>
+</html>

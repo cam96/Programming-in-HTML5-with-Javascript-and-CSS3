@@ -1,0 +1,39 @@
+<!DOCTYPE html>  <!-- No-quirks mode causes the browser to operate in an HTML5-compliant manner. -->
+<html>
+	<head> <!-- Specifies meta data about the HTML document -->
+		<meta charset="utf-8" />  <!-- element describes the character set as utf-8, which is an efficient form of unicode in which the English language characters (ASCII) require only a single byte to be represented, and in which other languages can have characters that are represented with up to 4 bytes -->
+		<title>
+			DEMO: Basic Form and Dialog
+		</title>
+	</head>
+	
+	<body> <!-- Content displayed in the browser goes here -->
+		<dialog id="window">
+			<h3>Hello World!</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, inventore!</p>
+			<button id="exit">Exit</button>
+		</dialog>
+		<button id="show">Show Dialog</button>
+		
+		<form>
+		  <fieldset>
+			<legend>Personalia:</legend>
+			Name: <input type="text"><br>
+			Email: <input type="text"><br>
+			Date of birth: <input type="text">
+		  </fieldset>
+		</form>
+		
+		<script>
+			(function() {
+				var dialog = document.getElementById('window');
+				document.getElementById('show').onclick = function() {
+					dialog.show();
+				};
+				document.getElementById('exit').onclick = function() {
+					dialog.close();
+				};
+			})();
+		</script>		
+	</body>
+</html>
