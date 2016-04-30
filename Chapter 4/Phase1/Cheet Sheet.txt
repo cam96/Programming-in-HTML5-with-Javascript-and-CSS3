@@ -1,0 +1,222 @@
+Legend
+- (NR) : Means 'Not Recommended'
+- (R) : Means 'Recommended'
+
+Agenda
+- Introducing CSS
+- Understanding selectors, specificity and cascading
+
+
+Section: Some terminology and definition
+
+- What are Cascading Style sheets: Cascading style sheets provide a way to apply presentation to a HTML structure, by defining how HTML elements are displayed.
+
+- What is a Style: A Style is a rule that describes how to format a specific part of a HTML document. (A collection of style rules is called a 'Style sheet')
+
+- What is the most powerful feature of CSS: Cascading - this means reading multiple styles sheets and overwriting previously read styles, with any new style encountered.
+
+
+Section: CSS selectors and comments
+
+- Defining and applying a style: composed of two parts. 
+	- The selector: locates the element in the HTML document
+	- The declaration block: contains the formatting to be applied
+
+	e.g. 	
+	body /*The selector*/ 
+	{
+		/*The declaration block is everything from the first '{' to the closing '}'*/
+		background-color: white;
+		color: gray;		
+	}
+
+- Adding comments within a style sheet
+	- Use "/**/" to add comments 
+		e.g. 
+		/*Comment for the body element*/
+		body{
+			color: gray; /*This is the font color*/
+		}
+
+	- Comments can also span multiple lines 
+		e.g.
+		/*This is a
+		multi-line comment*/
+		body{
+			color: blue;
+		}
+
+
+Section: Ways to style a HTML document
+- There are a few ways to style a HTML document
+	- Creating an inline style: means a style inside the HTML page directly
+	- Creating an embedded style: defining styles in the <head> tag of a HTML page, that will apply to elements in the HTML page
+	- (Recommended) Creating an external style sheet: Create a separate, stand-alone style sheet, that can be used in multiple HTML pages
+
+- (NR) Creating an inline style (means a style inside the HTML page directly)
+	e.g.
+	<body style="color:blue;">
+		This is the body tag in a html document
+	</body>
+
+	Why we should not do this:
+	- We should avoid using this technique because it violates the goal of separation of responsibility. HTML should display, while CSS should style
+	- Doesn't create re-usability of styles on other HTML pages
+	- Leads to tight-coupling between the view and style sheet. We have to go to the view now anytime we want to change a style
+
+	Advantages of using this:
+	- Inline styles ALWAYS override all other styles, because they are specific to the element for which they are defined.
+		- So use this if you are having no success overriding a style for an element
+
+- (NR) Creating an embedded style (defining styles in the <head> tag of a HTML page, that will apply to elements in the HTML page)
+	e.g.
+	<html>
+	<head>
+		<!--Embedded Style Start -->
+		<style>
+			body {
+				background-color: white;
+				color: gray;
+			}
+		</style>
+		<!--Embedded Style End -->
+	</head>
+	<body>
+		This text will have a white background and a gray font 
+	</body>
+	</html>
+
+	Why we should not do this:
+	- Does not provide file separation, so the CSS cannot be re-used in another HTML page
+
+	When to use this:
+	- When you have a single, stand-alone HTML document that contains everything needed to render it (Even then, just separate the CSS from the HTML - it will help prevent a cluttered HTML file)
+
+-(R) Creating an external style sheet (Create a separate, stand-alone style sheet, that can be used in multiple HTML pages)
+	e.g. A sample.css file contains styles, and gets linked to the index.html file
+
+	--sample.css file
+	body{
+		color: blue;
+	}
+
+	--index.html file
+	<html>
+		<head>
+			<link rel="stylesheet" type="text/css" href="sample.css"/>
+		</head>
+		<body>
+			This font will be blue. Thank you, sample.css for your style
+		</body>
+	</html>
+
+	Why we should use this:
+	- Provides separation of concerns. Html displays elements, CSS styles elements
+	- Provides reuse of styles on other pages
+
+Section: using the 'media' attribute, to specify the target device
+
+- When linking a css file to a html document, we can use the 'media' attribute to specify what device (tablet, phone, desktop), we want the css file to be applied to.
+
+- Here are all the media tags:
+	- all: CSS renders to all devices
+	- braille: CSS renders to braille tactile feedback devices
+	- embossed: CSS renders to paged braille printers
+	- handheld: CSS renders to handheld devices that typically have small, low-resolution screens and limited bandwidth
+	- print: CSS renders paged material and documents viewed on screen in print preview mode
+	- screen: CSS renders to color computer screens
+	- speech: Renders to speech synthesizers
+	- tty: Renders to media, using a fixed-pitch character grid such as teletypes, terminals, and portable devices with limited display capabilities
+	- tv: Renders to television-type devices that typically have low-resolution color screens with limited ability to scroll and have sound
+
+e.g. Render screen.css on computer screens, and printer.css whenever the Print preview mode is entered
+
+		- <link rel='stylesheet' type='text/css' href='screen.css' media='screen' />
+
+		- <link rel='stylesheet' type='text/css' href='printer.css' media='print' />
+
+
+-NOTE: You can specify a CSS file as being applicable to multiple device types by comma separating each device type within the quotes.
+	e.g. use printer.css in print, screen, and handheld mode
+	<link rel='stylesheet' type='text/css' href='printer.css' media='print, screen, handheld' />
+
+
+Section: Manipulating style sheets
+
+- Specifying the character encoding of the style sheet
+	IN CSS:
+	- Use the @charset rule to specify the character encoding of the style sheet. Be sure to place it on the first line of your css file
+
+	Why should we do this:
+	- To be compatible with all browsers, we have to place this on the first line of our CSS file.
+
+	e.g. The following is an example of a CSS file that sets the character set to UTF-8, which is the most common character set that is usable with Unicode characters
+
+		-- sample.css
+
+		@charset 'UTF-8';
+		body{
+			color: purple;
+		}
+
+	IN HTML:
+	- we can also specify the character encoding in HTML using the <meta> tag.
+	NOTE: using the <meta> tag in HTML overrides using the @charset tag in any linked CSS files
+
+	e.g.
+	<head>
+		<!-- Meta 'charset' overwrites sample.css '@charset' setting -->
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+		<link rel="stylesheet" type="text/css" href="sample.css" />
+	</head>
+
+	Tricks of the trade:
+	- If all your HTML docs have the <meta> element with the 'charset' setting, you do not need the @charset rule in the CSS file.
+	- If the CSS file will be shared and you want to ensure that the style sheet character set is correct, you should specify the @charset rule
+
+
+- Importing style sheets from other style sheets
+	- As Style sheets grow, we will want to break them up into smaller, more manageable files.
+	- use the @import rule, to import all required css files into the current style sheet (you can import as many files as you want)
+	e.g. sample.css
+	@import url('header.css');
+	@import url('footer.css');
+	@import url('menu.css');
+
+	Rules of using the @import rules
+	- The @import rules must be at the top of your style sheet, after any @charset rule, but before anything else, even comments. If not, they will not work properly
+	
+	e.g. GOOD use of @import:
+	@charset 'UTF-8';
+	@import url('header.css');
+	@import url('footer.css');
+
+	e.g. BAD use of @import:
+	@import url('header.css');
+	@charset 'UTF-8';
+
+	OR
+
+	@charset 'UTF-8';
+	/*Having anything except '@charset' before @import rule is wrong*/
+	@import url('header.css');
+	@import url('footer.css');
+
+	- We can also specify the media type for each @import rule
+	e.g.
+	@charset 'UTF-8';
+	@import url('header.css'); screen
+	@import url('footer.css'); print
+
+- Using the @font-face rule to import fonts
+	- You might want to use a special font that a user might not have on their computer. The @font-face rule helps import your font onto the user's computer
+	e.g. 
+	@font-face {
+		font-family: myFont;
+		src: 	url('Fancy_Feet.ttf'),
+					url('Fancy_Feet.eot'); /*IE9 - EOT is Microsoft's font extension*/
+	}
+
+	- you must specify both .ttf and .eot font types to be compatible with most browsers
+
+	Note: fonts are intellectual property, just like software, music, etc. Make sure you have the proper license before using any @font-face rule
