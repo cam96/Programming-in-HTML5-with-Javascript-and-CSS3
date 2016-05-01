@@ -220,3 +220,285 @@ Section: Manipulating style sheets
 	- you must specify both .ttf and .eot font types to be compatible with most browsers
 
 	Note: fonts are intellectual property, just like software, music, etc. Make sure you have the proper license before using any @font-face rule
+
+
+
+Lesson 2: Understanding selectors, specificity, and cascading
+
+Section: Defining selectors
+- Selectors can be defined in the following ways:
+	- Creating an 'Element Type' selector (i.e. any HTML element. e.g. button, div, span, input, etc)
+		- An element type selector is based on the name of the tag.
+		e.g. The button selector applies the style defined in the {}, to every single button on the HTML page
+		
+		button {
+			color: green;
+			background-color: yellow;
+		}
+
+	- Creating an id selector 
+		- An id selector is based on the id of the HTML element.
+		e.g. The example below targets the input element with an id of 'name', and sets the font color to blue
+
+		*REMEMBER: Since all element ids must be unique on a HTML page, the style will only ever get applied to one element, with an id of 'name'
+
+		--index.html
+		<input id="name" type="text" />
+
+		--sample.css
+		#name{
+			color: blue;
+		}
+
+	- Creating a class selector
+		-A class selector is a style with a class name of your choice, prefixed with the period (.) symbol. This is also called a named style.
+		- The class name can be applied to multiple elements on the HTML page
+
+		e.g. 
+		.myStyle{
+			color: gray;
+		}
+
+		<button class="myStyle"></button>
+		<div class="myStyle"></div>
+
+	- (NR) Using the universal selector
+		- if you want to apply a style to every element, you can use the asterisk (*) symbol		
+		e.g. lets make the font color on the entire page blue
+		*{
+			color: blue;
+		}
+
+		Why should we avoid this:
+		- Avoid using the universal selector because of the performance cost
+
+	- Using descendant selectors
+		- change the style of elements only if the elements are descendants of another element
+		e.g. Single descendant selector - remove the underline from hyperlinks if they are presented in a list item
+		li a {
+			text-decoration: none;
+		}
+
+		e.g. Multiple descendant selectors - select all a tags, that have an li for a parent, who has an ol as its parent, with a div as the top parent.
+		div ol li a {
+			text-decoration: none;
+		}
+
+	- Using Child selectors
+		- Here we change the style of an element, only if the element is a direct child of another element.
+		e.g.
+		li > a {
+			text-decoration: none;
+		}
+
+		e.g.
+		div > ol > li > a {
+			text-decoration: none;
+		}
+
+	- Using pseudo-class and pseudo-element selectors
+		- Both are used to style things not found in the DOM (Document Object Model) e.g. div:first-child : the first child in a div
+		- pseudo-class:
+			- They can be used anywhere in the selector chain 
+			e.g. 
+			div > li:first-child > a {}
+			OR
+			div ul li a:first-child
+
+			- The following are the list of pseudo classes:
+				- :link Denotes an unvisited link, where a:link selects all unvisited links.
+				- :visited Denotes visited links, where a:visited selects all visited links.
+				- :active Denotes an active link when active means that the mouse button is pressed
+				down and a:active selects all active links.
+				- :hover Denotes a link the mouse cursor is over when a:hover selects the link the
+				mouse is over.
+				- :focus Denotes an element that has focus when input:focus selects the input that has
+				focus.
+				- :checked Denotes an option button or check box element whose checked attribute is
+				set, where input[type=’checkbox’]:checked selects all check boxes that are selected.
+				- :lang(language) Denotes an element whose lang attribute is set to language when
+				p:lang(en) selects all paragraphs and the lang attribute starts with en.
+				- :not Provides negation when div:not(“#mainContainer”) selects all <div> elements except the <div> element whose id is mainContainer.
+				- :nth-child(formula) Selects the nth child of a parent if the formula is an integer
+				value. For example, li:nthchild(3) selects the third list item. Note that the number is
+				one-based, not zero-based. This pseudo class is powerful.
+				You can provide a formula based on an + b when a is cycle count and n is a counter
+				variable, and b represents the element within the cycle that you want to select. For
+				example, li:nthchild(10n + 3) selects the third element of every 10 elements, so if a
+				<ul> element contains 45 <li> elements, elements 3, 13, 23, 33, and 43 will be selected.
+				You can also use the keywords odd and even to select odd and even child elements.
+				For example, li:nth-child(odd) selects elements 1, 3, 5, 7, and so on.
+				- :nth-last-child(n) Selects the nth child of a parent if the formula is an integer value.
+				For example, li:nth-last-child(3) selects the third list item from the end of the list. Note
+				that the number is one-based, not zero-based.
+				- :only-child Selects elements that are the only child of the parent.
+				- :only-of-type Selects elements that are the only child of the parent and have the
+				specified type.
+				- :first-of-type Selects the first element of the specified type.
+
+		- pseudo-elements:
+			- Rules:
+				- They cannot be used in inline styles
+				- They cannot be chained e.g. div:hover > li
+				- They cannot be grouped e.g. a:hover:active
+				- They can be used only at the END of the selector chain 	e.g. div a:active { }
+
+			- The following are a list of pseudo-elements
+				- ::first-line Selects the first line
+				- ::first-letter Selects the first letter
+				- ::before inserts text before the element specified
+				- ::after inserts text after the element specified
+
+		- Recommendations:
+			- CSS3 recommends one colon (:) before pseudo classes and two colons (::) before pseudo elements, although most people use one colon for both for backwards compatibility
+
+	- Grouping selectors
+		- Apply the same style to multiple selectors by using a comma to separate them 
+		e.g. 
+		div > li,
+		div > a
+		{
+			color: green;
+		}
+
+	- Using subsequent adjacent sibling selectors
+		- Select an element, only if it is preceded by a specific element as its previous sibling
+		- denoted by the plus (+) sign
+		- selects only the first matching element
+		e.g.
+		div + h1 {
+			background-color: yellow;
+		}
+
+		<div>
+			<div></div>
+			<h1>Gets a background of yellow because its previous
+			sibling is a div</h1>
+		</div>
+
+	- Using the subsequent sibling selector
+		- denoted by a tilde (~) 
+		- Select all elements that have a specific element their previous sibling
+		- Does not just stop at the first element matched
+		e.g. 
+		div ~ h1 {
+			color: blue; /*Applies to ALL h1 elements, that have a previous div sibling, no matter how far up*/
+		}
+
+		<div>
+			<div></div>
+			<h1>style applies cause my previous sibling is a div</h1>
+			<span></span>
+			<h1>style also applies cause my previous sibling is a div   </h1>
+		</div>
+
+	- Using he attribute selector
+		- selects elements based on the existence of the specified attribute
+		e.g.
+		a[href]
+		{
+			color: blue; /*All <a> with the 'href' attribute defined*/
+		}
+
+		-we can also use the 'attr()' function to retrieve the value of an attribute
+		e.g. 
+		a[href]
+		{
+			content: " (" attr(href) ")";/*Adds the value of the href attribute to the element content*/
+		}
+
+		<a href="test.com"> test </a>
+		gets rendered as
+		"test (test.com)"
+
+	- Using an attribute value selector
+		- selects all elements where the specified attribute has the specified value
+		e.g.
+		a[href='http://test.com']{
+			color: blue;
+		}
+
+	- Using the attribute contains value selector
+		- selects elements where the attribute contains the text
+		- use star (*)
+		e.g.
+		a[href*='test.com']	{}
+
+	- Using the attribute value starts with selector
+		- selects elements where the attribute starts-with the text
+		- denoted by ^
+		e.g.
+		a[href^='http']{}
+
+	- Using the attribute value ends with selector
+		- selects elements where the attribute ends-with the text
+		- denoted by $
+		e.g.
+		a[href$='jpg']{}
+
+	- Using the attribute contains value in list selector
+		- selects elements who specified attribute matches a value in a pre-defined list of values
+		- we need to specify selectors using the contains (~) notation, for every value in the pre-defined list we want to target
+
+		e.g. (the data-linktype attribute might be one of secure, externalLink, or internalLink)
+		a[data-linktype ~='secure']{}
+		a[data-linktype ~='externalLink']{}
+		a[data-linktype ~='internalLink']{}
+
+	- Understanding the browser's built-in styles
+		- Each browser has a built-in default style sheet that gets applied first to all HTML docs before any other style sheets are applied
+	
+	- Extending browser styles by adding a user-defined style sheet
+		- To add a user-defined style sheet to your browser (overwrites the browser-default style sheet), goto: Tools | Internet Options | General | Accessibility > (User style sheet section)
+		Note: user styles only apply on the browser & computer they were set. so it won't work on client's computers unless set
+
+	- (NR) Working with important styles
+		- the !important modifier can be added to styles, to force their execution over other styles
+		e.g.
+		a{
+			color: blue !important;
+		}
+		- using the !important modifier too often can lead to very rigid and un-modifyable style sheets
+
+	- How do styles cascade???
+		- The order in which style rules are applied is as follows: Important > Specificity > Textual Order
+			- Important: was the !important modifier used? Yes? Enforce this style
+			- Specificity: which style rule is the most specific? use that one
+			- Textual order: last style rule specified overwrites previous style rules
+
+			The following list describes the evaluation order of the various style sheets
+				1. Browser’s built-in style sheet
+				2. User’s normal declarations in the user style sheet
+				3. Author’s normal declarations in the author style sheet
+				4. Author’s important declarations in the author style sheet
+				5. User’s important declarations in the user style sheet
+
+		- Using specificity
+			- rule:
+				- a record the number of id attributes in the selector
+				- b record the quantity of class selectors, attribute selectors, and pseudo classes
+				- c record the quantity of element names in the selector
+
+				- with a > b > c, concatenate the three numbers to form a specificity value.
+
+				e.g. a | b | c 
+				* = 0 | 0 | 0 (000)
+				li = 0 | 0 | 1 (001)
+				div ol + li = 0 | 0 | 3 (003)
+				div .content ol + li .selected = 0 | 2 | 3 (023)
+				#main = 1 | 0 | 0 (100)
+				#main ul + li .selected = 1 | 1 | 2 (112)
+				#main ul + li a = 1 | 0 | 3 (103)
+
+		- Using inheritance
+			- An element can get its style from a parent element when no other styles are defined that are more specific
+			e.g. 
+			body { font-size: x-large; }
+				- In this example, all elements within the <body> element inherit the font size, but if an element is assigned a font size, the assigned font size overrides the inherited size.
+
+		- Using the inherit value
+			- reset an element's style to inherit its parent value
+			e.g.
+			body{ font-size: x-large; }
+			li > a { font-size: small;}	/*change font size*/
+			li:nth-child(4) { font-size: inherit; } /*reset font size of the 4th element to inherit from parent*/
