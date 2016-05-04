@@ -1,0 +1,23 @@
+@charset 'UTF-8';
+/*Add import statements here if needed*/
+
+
+/*Start css body*/
+div.test-css-props {
+	/*Set the color to lime*/
+	color: #00ff00;
+}
+
+div.test-css-props > section.diff-color {
+	/*Shortform of specifying color*/
+	color: #f00;
+
+	/*specifying color by color name*/
+	background-color: brown;
+}
+
+section.test-rgb-color
+{
+	/*any value > 100% gets set to 100%*/
+	color: rgb(50%,150%,90%);
+}

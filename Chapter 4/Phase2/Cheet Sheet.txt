@@ -1,0 +1,22 @@
+﻿Legend
+- (NR) : Means 'Not Recommended'
+- (R) : Means 'Recommended'
+
+Agenda
+- Working with CSS properties
+
+Section: Working with CSS colors
+- setting colors. mininum value = 0, max = f
+e.g. #00ff00 = lime OR #0f0 = lime (shortform)
+	- we can also specify the color by name
+	e.g. aqua, beige, bisque
+	- for a full list of css color names, go to http://www.w3schools.com/colors/colors_names.asp
+
+	- we can also use the rgb function.
+		- it accepts 3 params R, G, and B, each ranging from 0 - 255
+		e.g. 
+			-h1 { background-color: rgb(255,0,0); } = red
+			-h1 { background-color: rgb(-100,500,0); } /*interpreted as 0,255,0 */
+			-h1 { background-color: rgb(20%,150%,0%); } /*interpreted as 20%,100%,0%*/
+
+- using transparency
