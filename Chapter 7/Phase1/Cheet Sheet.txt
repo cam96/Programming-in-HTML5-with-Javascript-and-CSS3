@@ -1,0 +1,159 @@
+Chapter 7: Working with forms
+
+After this lesson, you will be able to:
+- understand basic HTTP protocol actions
+- Understand how data is sent to the server
+
+Section: Understanding web communications
+- The following actions occur when web communication occurs:
+	1. The user browses to a website, which causes the browser to initiate a request for a web server resource.
+	2. HTTP protocol sends a GET request to the web server.
+	3. The web server processes the request.
+	4. The web server sends a response to the web browser, also by using HTTP protocol.
+	5. The browser processes the response, causing a webpage to display.
+	6. The user enters data into a form on the webpage and clicks a Submit button that causes the data to be sent back to the web server.
+	7. HTTP protocol posts the data back to the server.
+	8. The web server processes the data.
+	9. The web server sends the response back to the browser through the HTTP protocol.
+	10. The web browser processes the response, displaying the webpage.
+
+- The Internet Explorer Developer tools (use F12 to access), can help you see all the requests and responses sent to/from the browser
+
+- Http Return codes
+	-1xx Informational message
+	-2xx Success
+	-3xx Redirect
+	-4xx Client error
+	-5xx Server error
+
+- Understanding the HTTP method:
+	- The following are valid method values:
+		- OPTIONS: A request for information about the communication options available. 
+		- GET: A request to retrieve a resource such as an HTML file or an image file.
+		- HEAD: Operates like the GET method except that the server does not return a message body in the response. The HEAD method retrieves metadata about a resource.
+		- POST: Request for the server to accept the data being sent from the client to modify	existing server data.
+		- PUT: Request for the server to accept the data being sent from the client to insert new server data.
+		- DELETE: Request for the server to delete a specific resource.
+		- TRACE: Invokes a remote, application-layer loopback of the request message, which enables the client to see what the server is receiving. This is typically used for testing or
+		diagnostic information
+		- CONNECT: Used with a proxy that can switch dynamically to being a tunnel.
+		- DEBUG: Not defined in the HTTP/1.1 specification; starts ASP.NET debugging. Informs	Visual Studio 2012 of the process to which the debugger will attach.
+
+- Submitting form data to the web server
+	- use the HTML <form> element to create a web form
+	- it can send data to a web server, or another location e.g. an email address
+	- e.g. 
+		<form method="post" action="getCustomer.aspx" >
+			Enter Customer ID:
+			<input type="text" name="Id" />
+			<input type="submit" value="Get Customer" />
+		</form>
+
+- Sending data when submitting a form
+	- Not all elements can send data when submitting a form
+	- Look at page 316 - 318 for a list of elements that can send data when submitting a form
+
+- Using the <label> element
+	- The label element can be used for labels that help the user identify the form submission element
+	-e.g. 
+		<form method="post" action="getCustomer.aspx" >
+			Enter Customer ID:
+			<input type="text" name="Id" />
+			<input type="submit" value="Get Customer" />
+		</form>
+
+		VS.
+
+		<form method="post" action="getCustomer.aspx" >
+			<label for="Id">Enter Customer ID:</label>
+			<input type="text" name="Id" />
+			<input type="submit" value="Get Customer" />
+		</form>
+
+		- When the text is placed in a <label> element, the user sees no difference. When the user clicks the label text, the Id element gets the focus.
+		- NOTE: the label has a for attribute, which must contain the
+		id of the element that will receive the focus when the user clicks the text.
+
+	- Another interesting benefit from using the label is that you can assign style rules to the <label> element.
+		- If you have several inputs, you can line up the inputs vertically by using the <label> element and setting its width
+
+- Specifying the parent forms
+	- Pre HTML5, elements had to be in a form before their values could be submitted with the form
+		- (IMPORTANT) Now in HTML5, the form submission elements have a 'form' attribute that can be set to the id of one or more <form> elements
+
+- Triggering the form submission
+	- To trigger the submission of a form, you can use any of the following elements:
+		- <button type='submit' name='submitButton'>Submit</button>
+		- <input type='submit' name='submitButton' value='Submit' />
+		- <input type='image' src='/images/submit.gif' alt='Submit' />
+	- we can also use jQuery to trigger a form submission:
+		function submitTheForm() {
+			$('#myForm').submit();
+		}
+
+- Serializing the form
+	- use the jQuery serialize method
+	- e.g. var formData = $('#myForm').serialize();
+					var data = decodeURIComponent(formData);
+
+- Using the autofocus attribute
+	- specify the autofocus attribute on a HTML element
+	- e.g. <input type="text" name="comment" autofocus="autofocus"/>
+
+- Using data submission constraints
+	- To end data, each form submission element must meet specific constraints. 
+		- Read all the constraints on page 322
+
+- Using POST or GET
+	- When the GET method is used, the QueryString containing the data is appended to the URL e.g. http://www.contoso.com/getProduct.aspx?productId=123&color=blue
+		- An advantage of using the GET verb is that you can see and modify the complete URL and QueryString in the address bar of the web browser
+		- One disadvantage of using the GET method is that the QueryString is limited in size by the web browser and web server you use. e.g. when using Internet Explorer and Internet
+		Information Server (IIS), the limit is 1,024 characters.
+
+	- When you use the POST method to submit data back to the web server, the data is placed in the message body, not the URL
+		- So we can't put the data in the URL when using POST
+
+
+Section: Form Validation
+- 'Required' validation
+	- use the 'required' attribute. Available on most form elements
+	- e.g. <input type="text" required="required" />
+
+	- Additionally: you might want to add a 'placeholder' to further explain what an element is suppposed to do
+		-e.g. <input type="text" placeholder="enter a comment"/>
+
+- Validating URL input
+	- use the "type='url'" attribute
+		-e.g. <input type="url"/>
+	- you can also specify a url 'pattern' to be accepted
+		-e.g. <input type="url" pattern="https?://.+"/>
+		- to use the 'pattern' attribute properly, you should specify a 'title' attribute, that will be used as a part of the validation (see page 328 for an example)
+
+- Validating numbers and ranges
+	- use the <input type=”number”> and <input type=”range”> elements to accept numeric values.
+	- both accept a min, max, and step parameter attribute (step defaults to 1 if not specified)
+		- e.g. <input type="number" min="18" max="99" value="30"/>
+		- the "range" type creates a slider control on the screen
+
+- Styling the validations
+	- Apply style rules to valid and invalid input by implementing style rules on the :valid, :invalid, :required, and :optional pseudo classes
+	-e.g.
+	:valid {
+		/*Enter style here*/
+	}
+
+	:invalid {
+		/*Enter style here*/
+	}
+
+	:required {
+		/*Enter style here*/
+	}
+
+	:optional {
+		/*Enter style here*/
+	}
+
+
+
+
