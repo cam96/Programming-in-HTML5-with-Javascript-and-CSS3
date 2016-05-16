@@ -20,3 +20,127 @@ e.g. #00ff00 = lime OR #0f0 = lime (shortform)
 			-h1 { background-color: rgb(20%,150%,0%); } /*interpreted as 20%,100%,0%*/
 
 - using transparency
+	- specified by setting the CSS 'opacity' property
+	- 0.0 = invisible & 1.0 = opaque
+
+- using the rgba function
+	- rgb(a): a stands for alpha, and represents the amount of transparency to use
+	- e.g. h1 { background-color: rgb(-100,500,0, 0.5); } /*interpreted as red=0,green=255,blue=0, and transparency=0.5 */
+
+- using the hsl function
+	- hsl: hue-saturation-lightness is another way to represent color in CSS3
+	- e.g. 
+		h2 { color: hsl(60, 100%, 50%); } /* yellow */
+		h2 { color: hsl(120, 100%, 25%); } /* dark green */
+	- go to: http://www.w3schools.com/cssref/css_colors_legal.asp for more info on hsl
+
+- Working with text (formatting text)
+	- Font families belong to one of five groups.
+		-	serif: Font families with serifs or curls at the top and bottom of characters, such as Times New Roman
+		- sans serif: Font families without serifs, such as Arial
+		- monospace: Font families in which all characters have the same width, such as
+		Courier New
+		- cursive: Font families that imitate handwriting, such as Mistral
+		- fantasy: Font families that are decorative and used in titles, such as Impact
+
+	- setting the font-family property
+		-NOTE: Be careful when specifying the font family because the one you specify must exist on the user’s computer. If the font family doesn’t exist, the browser will use its default font.
+		- we can specify a list of font families in our style rule. The browser will attempt to use the first font family specified, and keep going down the list until it either finds a font family that exists, or it uses its default font when no font family we specified exists on the client's computer
+		e.g.
+		h1 { font-family: arial, verdana, sans-serif; }
+		h1 { font-family: "times new roman", serif; }
+		h1 { font-family: "courier new", monospace; }
+
+	- specifying the font size
+		- font size can be specified using absolute units or relative units
+			- use 'absolute units' when the output environment is known, and will not change
+			- else use 'relative units'
+		- A list of available measurement units:
+			- em: A relative measurement multiplier of the parent element’s computed font size
+			-	px: An absolute measurement pixel unit, 96 pixels per inch
+			-	pt: An absolute measurement point unit, 72 points per inch
+			- pc: An absolute measurement pica unit, 12 points per pica
+			- in: An absolute measurement inch unit
+			- mm: An absolute measurement millimeter unit
+			- cm: An absolute measurement centimeter unit
+		- There is a set of absolute sizes controlled by the browser:
+			- xx-small, x-small, small, medium, large, x-large, and xx-large (e.g. h1 { font-size: small; })
+		- There is also a set of relative sizes whose size is based on the parent element's:
+			- larger, smaller (e.g. h1 { font-size: larger; })
+
+- Working with the CSS box model
+	- The css box model defines the spacing around boxes in your html (http://www.w3schools.com/css/css_boxmodel.asp)
+	- we need to know how to set the border, padding (space from the element border to the element text), and margin (space from the element border to other elements on the page).
+		- e.g. 
+			p {
+				border: 10px; /*Set the border width*/
+				padding: 25px; /*set the padding size*/
+				margin: 15px; /*set the margin size*/			
+				border-style: solid; /*set the style of the border.*/
+				border-color: green; /*border color*/
+			}
+
+	- we can also specify the values of each individual side of the padding, margin, and border properties (by using the 'property-' & 'left, right, top, bottom' syntax)
+		-e.g.
+			p {
+				border-bottom: 10px; /*Set the bottom border width to be 10px */
+				border-right: 5px;
+				border-left: 1px;
+				border-top: 0px;
+				padding: 25px;
+				margin: 15px;
+				margin-bottom: 10px; /*Set the bottom margin size to be 10px */
+				background-color: yellow;
+				border-style: solid;
+				border-color: green;
+			}
+
+	- There are also some shortcuts to specifying the settings for each side of the padding, margin, and border using the 'top, right, bottom, left' notation
+		- e.g. padding: 1px 2px 3px 4px;
+		- e.g. margin: 5px 15px; /*5px to top & bottom, 15px to left & right*/
+
+- Positioning <div> elements
+	- A div by default consumes the entire width of the screen. Therefore the next element is forced to render on the next line.
+	- Positioning a div: 
+		- using the 'static' position property (default position property)
+			- the element is displayed where it would normally appear in the html flow
+			- not normally used unless when overriding other position settings applied to an element
+
+		- using the 'relative' position property
+			- The element can be offset from where it normally appears in the html flow
+			- e.g. The style rule applied below pushes the element 15px down from the top, and 30px rightward from the left
+				#div2{
+					position:relative;
+					top: 15px;
+					left: 30px;
+				}
+
+		- using the 'absolute' position property
+			- The element is removed from the HTML flow and positioned within the first non-static element.
+			- NOTE: if all parent elements are static (the default), then the element is positioned within the browser window.
+			
+		- using the 'fixed' position property
+			- The element position is always calculated relative to the browser window
+
+- Using the 'float' property
+	- used to allow an element float to the left or right.
+	- NOTE: elements can only be floated horizontally not vertically
+	- e.g. 
+		#div1{ float: left; }
+
+- Using the 'clear' property
+	- The clear property instructs the browser to place the clear element after floating elements.
+	- e.g.
+		#div6 { clear:both; }
+
+- Using the box-sizing property
+	- we can change the way the browser calculates the width by using the following:
+		- content-box: The dafault setting; calculates the width based on the content width only (e.g. div{ box-sizing: content-box; } )
+		- border-box: Calculates the width based on the border, padding, and content width (e.g. div{ box-sizing: border-box; } )
+		- padding-box: Calculates the width based on the padding and content width (e.g. div{ box-sizing: padding-box; })
+
+- Centering content in the browser window
+	- The element to be centered MUST have its 'width' set
+	- Use 'margin-left:auto;' & 'margin-right:auto;' to make the element centered
+
+

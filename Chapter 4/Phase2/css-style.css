@@ -4,6 +4,10 @@
 
 /*Start css body*/
 div.test-css-props {
+	width: 100%;
+}
+
+section.test-set-color{
 	/*Set the color to lime*/
 	color: #00ff00;
 }
@@ -13,7 +17,7 @@ div.test-css-props > section.diff-color {
 	color: #f00;
 
 	/*specifying color by color name*/
-	background-color: brown;
+	background-color: beige;
 }
 
 section.test-rgb-color
@@ -21,3 +25,182 @@ section.test-rgb-color
 	/*any value > 100% gets set to 100%*/
 	color: rgb(50%,150%,90%);
 }
+
+/*Test transparency*/
+section.test-transparency{
+	opacity: .5;
+}
+
+/*Format section tags properly*/
+div.test-css-props > section{
+	display: inline-block;
+	height: auto;
+	width: 23%;
+	margin-bottom: 15px;
+}
+
+/*Test RGBA function*/
+section.test-rgba{
+	/*interpreted as red=0,green=255,blue=0, 
+	and transparency=0.5 */
+	background-color: rgba(-100,500,0, 0.5);
+}
+
+/*Test hsl*/
+section.test-hsl-coloring {
+ color: hsl(120, 100%, 25%); 
+} /* dark green */
+
+/*Font family and size section*/
+section.test-font-family{
+	font-family: arial, verdana, sans-serif;
+}
+
+section.test-another-font-family{
+	font-family: "courier new", monospace;
+}
+
+section.test-font-size > span.px-size { font-size: 13px;}
+section.test-font-size > span.em-size { font-size: 1.2em;}
+section.test-font-size > span.pt-size { font-size: 9pt;}
+section.test-font-size > span.pc-size { font-size: 0.9pc;}
+section.test-font-size > span.in-size { font-size: 0.3in;}
+section.test-font-size > span.mm-size { font-size: 6mm;}
+section.test-font-size > span.cm-size { font-size: 0.4cm;}
+
+section.test-font-size > span.xx-small-size { font-size: xx-small;}
+section.test-font-size > span.medium-size { font-size: medium;}
+section.test-font-size > span.x-large-size { font-size: x-large;}
+
+section.test-font-size > span.larger-size { font-size: larger;}
+section.test-font-size > span.smaller-size { font-size: smaller;}
+/*End Font family and size section*/
+
+/*Set border, padding, margin*/
+section.test-set-border-padding-margin{
+	border: 5px;
+	padding: 2px; /*2px padding to all sides 
+	(left, right, top, bottom)*/
+	margin: 10px;/*10px margin to all sides 
+	(left, right, top, bottom)*/
+	border-style: solid;
+	background-color: yellow;
+	border-color: green; /*border color*/
+}
+
+/*Set border, padding, margin by 
+specifying the values of each individual 
+side of the padding, margin, and border
+ properties (by using the 'property-' & 
+ 	'left, right, top, bottom' syntax)*/
+section.test-set-specific-border-padding-margin{
+	border-bottom: 10px; /*Set the bottom border width to be 10px */
+	border-right: 5px;
+	border-left: 1px;
+	border-top: 3px;
+	padding: 3px 5px 7px 8px; /*(T, R, B, L)*/
+	margin: 5px 0px; /*5px to top & bottom, 0px to left & right*/
+	background-color: #00e6e6;
+	border-style: solid;
+	border-color: green;
+}
+
+
+/*Position elements*/
+div.test-css-props > section.test-set-position{
+	position: relative;
+	height: 100px;
+	font-weight: bold;
+}
+
+section.test-set-position > div{
+	height: 20%;
+	margin-bottom: 4px;
+}
+
+section.test-set-position > div.use-static-positioning{
+	position: static;
+	background-color: teal;
+}
+
+section.test-set-position > div.use-relative-positioning{
+	position: relative;
+	background-color: teal;
+}
+
+section.test-set-position > div.use-absolute-positioning{
+	position: absolute;
+	top: 90%;
+	left: 0.2em;
+	background-color: teal;
+}
+
+section.test-set-position > div.use-fixed-positioning{
+	position: fixed;
+	height: 20px;
+	top: 69%;
+	left: 26%;
+	background-color: teal;
+}
+
+/*Using the float property*/
+section.test-using-float{
+	background-color: lightblue;
+}
+
+section.test-using-float > div {
+	width: 80%;
+}
+
+section.test-using-float > div.float-left{
+	float: left;
+	background-color: cadetblue;
+}
+
+section.test-using-float > div.second-div{
+	background-color: yellow;
+}
+
+
+/*Show the Clear function*/
+section.test-using-clear-function{
+	background-color: lightgreen;
+}
+
+section.test-using-clear-function > div {
+	width: 40%;
+}
+
+section.test-using-clear-function > div.float-left{
+	float: left;
+}
+
+section.test-using-clear-function > div.second-div{
+	clear: both;
+	background-color: cadetblue;
+}
+
+/*Show 'box sizing'*/
+section.test-box-sizing > div.content-box{
+	box-sizing: content-box;
+}
+
+section.test-box-sizing > div.border-box{
+	box-sizing: border-box;
+}
+
+section.test-box-sizing > div.padding-box{
+	box-sizing: padding-box;
+}
+
+/*Show element centering*/
+section.center-my-content {
+	background-color: antiquewhite;
+}
+
+section.center-my-content > div.center-me{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
