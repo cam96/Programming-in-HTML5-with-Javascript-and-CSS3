@@ -1,0 +1,6 @@
+C:\GitHub\Programming-in-HTML5-with-Javascript-and-CSS3\Chapter 6\Ch9_Async_Animations\Ch9_Async_Animations\bin\Ch9_Async_Animations.dll.config
+C:\GitHub\Programming-in-HTML5-with-Javascript-and-CSS3\Chapter 6\Ch9_Async_Animations\Ch9_Async_Animations\bin\Ch9_Async_Animations.dll
+C:\GitHub\Programming-in-HTML5-with-Javascript-and-CSS3\Chapter 6\Ch9_Async_Animations\Ch9_Async_Animations\bin\Ch9_Async_Animations.pdb
+C:\GitHub\Programming-in-HTML5-with-Javascript-and-CSS3\Chapter 6\Ch9_Async_Animations\Ch9_Async_Animations\obj\Debug\Ch9_Async_Animations.csprojResolveAssemblyReference.cache
+C:\GitHub\Programming-in-HTML5-with-Javascript-and-CSS3\Chapter 6\Ch9_Async_Animations\Ch9_Async_Animations\obj\Debug\Ch9_Async_Animations.dll
+C:\GitHub\Programming-in-HTML5-with-Javascript-and-CSS3\Chapter 6\Ch9_Async_Animations\Ch9_Async_Animations\obj\Debug\Ch9_Async_Animations.pdb
