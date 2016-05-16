@@ -1,1 +1,1 @@
-Phase 2 starts from page 165 - Lesson 3: Working with CSS properties
+Phase 2 starts from page 165 - 195 Lesson 3: Working with CSS properties
