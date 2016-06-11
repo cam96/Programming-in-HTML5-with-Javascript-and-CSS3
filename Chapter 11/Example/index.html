@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Fun with Video Element</title>
+		<script src="jquery-3.0.0.min.js"></script>
+		<script src="index.js"></script>
+	</head>
+	<body>
+		<h1>Having fun with the video element</h1>
+		<video id="video" controls="controls" poster="example.jpg" height="600" width="800">
+			<source src="example.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+			<source src="example.ogg" type='video/ogg; codecs="vorbis, vp8"' />
+			Your browser does not support HTML5 video.
+			<track src="example.vtt" kind="subtitles" srclang="en" label="English" default />
+		</video>
+		<!-- alternate way to specify a video <video src="example.mp4" /> -->
+	</body>
+</html>
